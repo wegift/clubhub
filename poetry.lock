@@ -46,17 +46,6 @@ python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*, !=3.4.*"
 version = "7.1.2"
 
 [[package]]
-category = "main"
-description = "The unofficial Python client library for the Clubhouse API."
-name = "clubhouse-lib"
-optional = false
-python-versions = "*"
-version = "1.0.0"
-
-[package.dependencies]
-requests = "*"
-
-[[package]]
 category = "dev"
 description = "Cross-platform colored terminal text."
 marker = "sys_platform == \"win32\""
@@ -293,7 +282,7 @@ dev = ["pytest", "pytest-timeout", "coverage", "tox", "sphinx", "pallets-sphinx-
 watchdog = ["watchdog"]
 
 [metadata]
-content-hash = "6447c061dc8c90a4910ae3b39906501337ba03d7bcfbddf3139fc72bf6bcab77"
+content-hash = "bb78690b8b3cccd4100f9df78148f464179ec17c46913dfa84c91300c97e3cf4"
 python-versions = "^3.8"
 
 [metadata.files]
@@ -316,9 +305,6 @@ chardet = [
 click = [
     {file = "click-7.1.2-py2.py3-none-any.whl", hash = "sha256:dacca89f4bfadd5de3d7489b7c8a566eee0d3676333fbb50030263894c38c0dc"},
     {file = "click-7.1.2.tar.gz", hash = "sha256:d2b5255c7c6349bc1bd1e59e08cd12acbbd63ce649f2588755783aa94dfb6b1a"},
-]
-clubhouse-lib = [
-    {file = "clubhouse-lib-1.0.0.tar.gz", hash = "sha256:fbae0b1907dfbcf0a23256d611189c5121a1f15e45b0cd8c717b941286a790b5"},
 ]
 colorama = [
     {file = "colorama-0.4.3-py2.py3-none-any.whl", hash = "sha256:7d73d2a99753107a36ac6b455ee49046802e59d9d076ef8e47b61499fa29afff"},
