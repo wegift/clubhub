@@ -38,3 +38,7 @@ Or activate the environment first
 poetry shell
 flask run --reload
 ```
+
+## Deploy
+
+Talk to Will
