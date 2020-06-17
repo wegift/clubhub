@@ -6,7 +6,7 @@ log = logging.getLogger(__name__)
 
 
 def on_gitlab_event(event: gitlab.GitlabEvent):
-    log.info("Processing gitlab event %s / %s", event.event_type, event.action)
+    log.info("Processing gitlab event %s / %s / %s", event.username, event.event_type, event.action)
     if event.event_type == gitlab.EVENT_TYPE_MR \
         and event.action in {gitlab.ACTION_MR_APPROVE, gitlab.ACTION_MR_APPROVAL}:
         # Is approval
