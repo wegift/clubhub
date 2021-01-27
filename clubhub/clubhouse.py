@@ -1,20 +1,16 @@
-import re
 from os import environ
+
+from requests import HTTPError
 
 import clubhouse_lib
 from clubhouse_lib.type import CreateLabelParams, Label
-from requests import HTTPError
-
-CLUBHOUSE_LABEL_ID_QA = int(environ.get("CLUBHOUSE_LABEL_ID_QA"))
-CLUBHOUSE_LABEL_ID_CODE_REVIEW = int(environ.get("CLUBHOUSE_LABEL_ID_CODE_REVIEW"))
+from clubhub import settings
 
 client = clubhouse_lib.ClubhouseClient(environ.get('CLUBHOUSE_API_TOKEN'))
 
-STORY_ID_PATTERN = re.compile("/ch(\d+)/")
-
 
 def get_story_id_from_branch_name(branch_name: str):
-    match = STORY_ID_PATTERN.search(f"/{branch_name}/")
+    match = settings.STORY_ID_PATTERN.search(f"/{branch_name}/")
     return int(match[1]) if match else None
 
 

@@ -1,6 +1,6 @@
 import logging
 
-from clubhub import gitlab, clubhouse, people
+from clubhub import gitlab, clubhouse, settings
 
 log = logging.getLogger(__name__)
 
@@ -24,11 +24,11 @@ def on_gitlab_mr_approve(event: gitlab.GitlabEvent):
 
     log.info("Matched story id %d for branch %s", story_id, event.source_branch)
 
-    if event.username in people.CODE_REVIEWERS:
+    if event.username in settings.PEOPLE_CODE_REVIEW:
         log.info("Adding code review label to story %d from branch %s", story_id, event.source_branch)
-        clubhouse.add_label_to_story(story_id, clubhouse.CLUBHOUSE_LABEL_ID_CODE_REVIEW)
-    elif event.username in people.QA_TESTERS:
+        clubhouse.add_label_to_story(story_id, settings.CLUBHOUSE_LABEL_ID_CODE_REVIEW)
+    elif event.username in settings.PEOPLE_QA:
         log.info("Adding qa label to story %d from branch %s", story_id, event.source_branch)
-        clubhouse.add_label_to_story(story_id, clubhouse.CLUBHOUSE_LABEL_ID_QA)
+        clubhouse.add_label_to_story(story_id, settings.CLUBHOUSE_LABEL_ID_QA)
     else:
         log.info("User %s not in any list, not adding label", event.username)
