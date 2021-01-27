@@ -11,6 +11,7 @@ ACTION_MR_OPEN = "open"
 ACTION_MR_APPROVE = "approved"
 ACTION_MR_APPROVAL = "approval"
 
+
 @dataclass(frozen=True)
 class GitlabEvent:
     event_type: str
@@ -24,7 +25,7 @@ class GitlabEvent:
     username: str
 
     @classmethod
-    def from_json(cls, json: Dict) -> 'GitlabEvent':
+    def from_json(cls, json: Dict) -> "GitlabEvent":
         return cls(
             event_type=json.get("event_type"),
             action=json.get("object_attributes", {}).get("action"),

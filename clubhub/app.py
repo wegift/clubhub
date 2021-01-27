@@ -9,24 +9,21 @@ from clubhub import gitlab, actions, settings
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
-logger.info('Booting clubhub')
+logger.info("Booting clubhub")
 
 if settings.SENTRY_DSN:
-    logger.info('Init Sentry')
-    sentry_sdk.init(
-        dsn=settings.SENTRY_DSN,
-        integrations=[FlaskIntegration()]
-    )
+    logger.info("Init Sentry")
+    sentry_sdk.init(dsn=settings.SENTRY_DSN, integrations=[FlaskIntegration()])
 
 app = flask.Flask(__name__)
 
 
-@app.route('/')
+@app.route("/")
 def hello_world():
     return "<h1>clubhub</h1><p>Hello World</p>"
 
 
-@app.route('/gitlab-webhook', methods=['POST'])
+@app.route("/gitlab-webhook", methods=["POST"])
 def gitlab_webhook():
     # return jsonify(request.json)
     event = gitlab.GitlabEvent.from_json(request.json)
@@ -35,6 +32,6 @@ def gitlab_webhook():
     # return jsonify(event)
 
 
-@app.route('/exc')
+@app.route("/exc")
 def raise_exception():
     raise Exception("Test exception")

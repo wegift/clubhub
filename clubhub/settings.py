@@ -3,7 +3,7 @@ import re
 from decouple import config, Csv
 
 # Optional Sentry DSN, provide to enable sentry logging
-SENTRY_DSN = config('SENTRY_DSN', default=None)
+SENTRY_DSN = config("SENTRY_DSN", default=None)
 
 # Label IDs for QA and Code Review labels
 CLUBHOUSE_LABEL_ID_CODE_REVIEW = config("CLUBHOUSE_LABEL_ID_CODE_REVIEW")

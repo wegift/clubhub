@@ -1087,9 +1087,7 @@ class ClubhouseClient:
             PrepareLocals({"org-public-id": org_public_id}),
         ).json()
 
-    def listMembers(
-        self, org_public_id: str = Omit  # type: ignore
-    ) -> List[Member]:
+    def listMembers(self, org_public_id: str = Omit) -> List[Member]:  # type: ignore
         """
         List Members returns information about members of the organization.
 
