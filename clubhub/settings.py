@@ -9,7 +9,7 @@ SENTRY_DSN = config('SENTRY_DSN', default=None)
 CLUBHOUSE_LABEL_ID_CODE_REVIEW = config("CLUBHOUSE_LABEL_ID_CODE_REVIEW")
 CLUBHOUSE_LABEL_ID_QA = config("CLUBHOUSE_LABEL_ID_QA")
 
-# CSVs of GitLab usernames for Code Review and QA groups
+# Comma separated list of GitLab usernames for Code Review and QA groups
 PEOPLE_CODE_REVIEW = config("PEOPLE_CODE_REVIEW", cast=Csv())
 PEOPLE_QA = config("PEOPLE_QA", cast=Csv())
 
