@@ -1,14 +1,16 @@
-# clubhub
+<h1>
+  <img src="https://gitlab.com/wegift/clubhub/-/raw/master/logo.png" height=32 float=left>
+  clubhub
+</h1>
 
 Custom integrations between GitLab and Clubhouse.
 
 At WeGift we use Clubhouse for managing our work and GitLab for source control and code
-review. This small app adds some functionality to make our lives easier.
+review. This small app adds some functionality to make our work easier.
 
-At present this app:
-
-- Adds "Code Review" and "QA" labels to Clubhouse cards when certain people approve
-  approve a linked merge request in GitLab. 
+| Event | GitLab | Clubhouse |
+| ----- | ------ | --------- |
+| On MR approval in GitLab adds "Code Review" and "QA" labels to linked Clubhouse card. | ![](https://gitlab.com/wegift/clubhub/-/raw/master/screenshots/mr-approve.png) | ![](https://gitlab.com/wegift/clubhub/-/raw/master/screenshots/clubhouse-code-review.png) |
 
 ## Install
 
