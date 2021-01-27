@@ -1,21 +1,20 @@
 import logging
-from os import environ
 
 import flask
 import sentry_sdk
 from flask import request
 from sentry_sdk.integrations.flask import FlaskIntegration
 
-from clubhub import gitlab, actions
+from clubhub import gitlab, actions, settings
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 logger.info('Booting clubhub')
 
-if environ.get('SENTRY_DSN'):
+if settings.SENTRY_DSN:
     logger.info('Init Sentry')
     sentry_sdk.init(
-        dsn=environ.get('SENTRY_DSN'),
+        dsn=settings.SENTRY_DSN,
         integrations=[FlaskIntegration()]
     )
 
