@@ -10,7 +10,7 @@ review. This small app adds some functionality to make our work easier.
 
 | Event | GitLab | Clubhouse |
 | ----- | ------ | --------- |
-| On MR approval in GitLab adds "Code Review" and "QA" labels to linked Clubhouse card. | ![](https://gitlab.com/wegift/clubhub/-/raw/master/screenshots/mr-approve.png) | ![](https://gitlab.com/wegift/clubhub/-/raw/master/screenshots/clubhouse-code-review.png) |
+| On MR approval in GitLab adds "Code Review" and "QA" labels to linked Clubhouse card. | ![](https://raw.githubusercontent.com/wegift/clubhub/master/screenshots/mr-approve.png) | ![](https://raw.githubusercontent.com/wegift/clubhub/master/screenshots/clubhouse-code-review.png) |
 
 ## Install
 
