@@ -1,5 +1,5 @@
 <h1>
-  <img src="https://gitlab.com/wegift/clubhub/-/raw/master/logo.png" height=32 float=left>
+  <img src="https://raw.githubusercontent.com/wegift/clubhub/master/logo.png" height=32 float=left>
   clubhub
 </h1>
 
