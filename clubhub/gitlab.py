@@ -7,8 +7,9 @@ EVENT_TYPE_MR = "merge_request"
 
 # Actions
 ACTION_MR_OPEN = "open"
+# For some reason there are two actions for approval, unsure why
 ACTION_MR_APPROVE = "approved"
-
+ACTION_MR_APPROVAL = "approval"
 
 @dataclass(frozen=True)
 class GitlabEvent:
