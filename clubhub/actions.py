@@ -1,6 +1,6 @@
 import logging
 
-from clubhub import gitlab, clubhouse, settings
+from clubhub import clubhouse, gitlab, settings
 
 log = logging.getLogger(__name__)
 

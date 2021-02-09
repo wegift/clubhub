@@ -1,6 +1,6 @@
 import re
 
-from decouple import config, Csv
+from decouple import Csv, config
 
 # Optional Sentry DSN, provide to enable sentry logging
 SENTRY_DSN = config("SENTRY_DSN", default=None)

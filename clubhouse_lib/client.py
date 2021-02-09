@@ -1,7 +1,8 @@
-from datetime import datetime
 import json
-import requests
+from datetime import datetime
 from typing import List, Optional
+
+import requests
 
 from .type import (
     Category,

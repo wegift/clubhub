@@ -5,7 +5,7 @@ import sentry_sdk
 from flask import request
 from sentry_sdk.integrations.flask import FlaskIntegration
 
-from clubhub import gitlab, actions, settings
+from clubhub import actions, gitlab, settings
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
