@@ -1,0 +1,8 @@
+image: python:3.8
+
+pre-commit:
+  stage: test
+  before_script:
+    - pip install pre-commit
+  script:
+    - pre-commit run --all-files
