@@ -1,0 +1,22 @@
+### Gitlab event moving from in dev -> in review
+
+POST http://localhost:5000/clubhouse-webhook
+Content-Type: application/json
+
+{"id": "abc4378478-3247823734280-3242397678c", "changed_at": "2021-04-14T10:25:12.912Z", "version": "v1", "primary_id": 10116, "member_id": "23483272398498237423894923234", "actions": [{"id": 10116, "entity_type": "story", "action": "update", "name": "Test story with no merge request", "story_type": "feature", "app_url": "https://app.clubhouse.io/test/story/12345", "changes": {"position": {"new": 52233204736, "old": 42138140394}, "workflow_state_id": {"new": 500000037, "old": 500000006}}}], "references": [{"id": 500000037, "entity_type": "workflow-state", "name": "In Review", "type": "started"}, {"id": 500000006, "entity_type": "workflow-state", "name": "In Development", "type": "started"}]}
+
+### Story with MR
+
+POST http://localhost:5000/clubhouse-webhook
+Content-Type: application/json
+
+{"id": "7364843-abcd-asdasdasas-342823", "changed_at": "2021-04-15T10:14:00.387Z", "version": "v1", "primary_id": 11774, "member_id": "23483272398498237423894923234", "actions": [{"id": 11774, "entity_type": "story", "action": "update", "name": "Test story with merge request", "story_type": "feature", "app_url": "https://app.clubhouse.io/test/story/12345", "changes": {"position": {"new": 52233188352, "old": 42138148586}, "workflow_state_id": {"new": 500000037, "old": 500000006}}}], "references": [{"id": 500000037, "entity_type": "workflow-state", "name": "In Review", "type": "started"}, {"id": 500000006, "entity_type": "workflow-state", "name": "In Development", "type": "started"}]}
+
+### Moving from In Review -> In Dev (backwards)
+
+POST http://localhost:5000/clubhouse-webhook
+Content-Type: application/json
+
+{"id": "abc4378478-3247823734280-3242397678c", "changed_at": "2021-04-15T12:47:02.038Z", "version": "v1", "primary_id": 11774, "member_id": "23483272398498237423894923234", "actions": [{"id": 11774, "entity_type": "story", "action": "update", "name": "Test story not moving from in development to in review", "story_type": "feature", "app_url": "https://app.clubhouse.io/test/story/12345", "changes": {"position": {"new": 42138148586, "old": 52233188352}, "workflow_state_id": {"new": 500000006, "old": 500000037}}}], "references": [{"id": 500000006, "entity_type": "workflow-state", "name": "In Development", "type": "started"}, {"id": 500000037, "entity_type": "workflow-state", "name": "In Review", "type": "started"}]}
+
+

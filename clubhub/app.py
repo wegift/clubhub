@@ -35,3 +35,13 @@ def gitlab_webhook():
 @app.route("/exc")
 def raise_exception():
     raise Exception("Test exception")
+
+
+@app.route("/clubhouse-webhook", methods=["POST"])
+def clubhouse_webhook():
+    event = request.json  # Event from clubhouse webhook
+    # It's possible to get empty events via the webhook for some reason
+    if event is not None:
+        logger.info("Actioning %s", event["id"])
+        actions.on_clubhouse_event(event)
+    return {}
