@@ -42,10 +42,12 @@ def is_update_event(event) -> bool:
 
 def moved_from_in_dev_to_in_review(event) -> bool:
     # TODO - Eventually these should be configurable
-    return (
-        event["references"][0]["name"] == "In Review"
-        and event["references"][1]["name"] == "In Development"
-    )
+
+    if "references" in event and len(event["references"]) == 1:
+        return (
+            event["references"][0]["name"] == "In Review"
+            and event["references"][1]["name"] == "In Development"
+        )
 
 
 # print(client.getStory(3984)['labels'])
