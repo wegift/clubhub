@@ -1,6 +1,6 @@
 import logging
 
-from clubhub import clubhouse, gitlab, settings
+from clubhub import clubhouse, gitlab, settings, slack
 
 log = logging.getLogger(__name__)
 
@@ -45,3 +45,33 @@ def on_gitlab_mr_approve(event: gitlab.GitlabEvent):
         clubhouse.add_label_to_story(story_id, settings.CLUBHOUSE_LABEL_ID_QA)
     else:
         log.info("User %s not in any list, not adding label", event.username)
+
+
+def on_clubhouse_event(event):
+    if clubhouse.is_update_event(event):
+        if clubhouse.moved_from_in_dev_to_in_review(event):
+            event_id = event["actions"][0]["id"]
+            log.info("%s is an update event", event_id)
+            story = clubhouse.client.getStory(event_id)
+            # TODO - Currently this is only for growth team, it should be expanded to be configurable for any team
+            if story["group_id"] == settings.GROWTH_TEAM_USER_GROUP_ID_CLUBHOUSE:
+                message = slack.generate_message(
+                    story, settings.GROWTH_SUBTEAM_ID_SLACK
+                )
+                log.info("Message generated %s", message)
+                slack.post_message(
+                    webhook=settings.GROWTH_TEAM_SLACK_WEBHOOK, json=message
+                )
+            else:
+                log.info(
+                    "Event %s is not for the growth team, not pushing message",
+                    event["id"],
+                )
+        else:
+            log.info(
+                "Event %s has not moved from In Development to In Review. Not pushing message",
+                event["id"],
+            )
+
+    else:
+        log.info("Event %s is not an update event, not pushing message", event["id"])
