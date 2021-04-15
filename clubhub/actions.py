@@ -53,7 +53,7 @@ def on_clubhouse_event(event):
             event_id = event["actions"][0]["id"]
             log.info("%s is an update event", event_id)
             story = clubhouse.client.getStory(event_id)
-            # Currently only works for Growth Team but could expand this
+            # TODO - Currently this is only for growth team, it should be expanded to be configurable for any team
             if story["group_id"] == settings.GROWTH_TEAM_USER_GROUP_ID_CLUBHOUSE:
                 message = slack.generate_message(
                     story, settings.GROWTH_SUBTEAM_ID_SLACK

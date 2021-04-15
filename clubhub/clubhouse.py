@@ -34,10 +34,14 @@ def add_label_to_story(story_id, label_id):
 
 
 def is_update_event(event) -> bool:
-    return event["actions"][0]["action"] == "update"
+    # TODO - Should be a function which checks for event type passed. Currently specific to growth team
+    if event["actions"]:
+        if len(event["actions"]) == 1:
+            return event["actions"][0]["action"] == "update"
 
 
 def moved_from_in_dev_to_in_review(event) -> bool:
+    # TODO - Eventually these should be configurable
     return (
         event["references"][0]["name"] == "In Review"
         and event["references"][1]["name"] == "In Development"
