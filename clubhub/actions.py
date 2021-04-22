@@ -49,7 +49,9 @@ def on_gitlab_mr_approve(event: gitlab.GitlabEvent):
 
 def on_clubhouse_event(event):
     if clubhouse.is_update_event(event):
-        if clubhouse.moved_from_in_dev_to_in_review(event):
+        if clubhouse.moved_between_columns(
+            event, clubhouse.IN_REVIEW_COLUMN, clubhouse.IN_DEVELOPMENT_COLUMN
+        ):
             event_id = event["actions"][0]["id"]
             log.info("%s is an update event", event_id)
             story = clubhouse.client.getStory(event_id)

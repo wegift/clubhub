@@ -8,6 +8,9 @@ from clubhub import settings
 
 client = clubhouse_lib.ClubhouseClient(environ.get("CLUBHOUSE_API_TOKEN"))
 
+IN_REVIEW_COLUMN = "In Review"
+IN_DEVELOPMENT_COLUMN = "In Development"
+
 
 def get_story_id_from_branch_name(branch_name: str):
     match = settings.STORY_ID_PATTERN.search(f"/{branch_name}/")
@@ -40,13 +43,12 @@ def is_update_event(event) -> bool:
             return event["actions"][0]["action"] == "update"
 
 
-def moved_from_in_dev_to_in_review(event) -> bool:
-    # TODO - Eventually these should be configurable
-
-    if "references" in event and len(event["references"]) == 1:
+def moved_between_columns(event, to_column, from_column) -> bool:
+    # Length of references should be at least 2
+    if "references" in event and len(event["references"]) >= 2:
         return (
-            event["references"][0]["name"] == "In Review"
-            and event["references"][1]["name"] == "In Development"
+            event["references"][0]["name"] == to_column
+            and event["references"][1]["name"] == from_column
         )
 
 
