@@ -55,9 +55,7 @@ def on_clubhouse_event(event):
             story = clubhouse.client.getStory(event_id)
             # TODO - Currently this is only for growth team, it should be expanded to be configurable for any team
             if story["group_id"] == settings.GROWTH_TEAM_USER_GROUP_ID_CLUBHOUSE:
-                message = slack.generate_message(
-                    story, settings.GROWTH_SUBTEAM_ID_SLACK
-                )
+                message = slack.generate_message(story)
                 log.info("Message generated %s", message)
                 slack.post_message(
                     webhook=settings.GROWTH_TEAM_SLACK_WEBHOOK, json=message
