@@ -13,7 +13,7 @@ IN_DEVELOPMENT_COLUMN = "In Development"
 
 
 def get_story_id_from_branch_name(branch_name: str):
-    match = settings.STORY_ID_PATTERN.search(f"/{branch_name}/")
+    match = settings.STORY_ID_PATTERN.search(f"{branch_name}")
     return int(match[1]) if match else None
 
 
